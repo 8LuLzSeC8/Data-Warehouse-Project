@@ -8,6 +8,10 @@ Script Purpose:
     - Truncates the bronze tables before loading data.
     - Uses the `BULK INSERT` command to load data from csv Files to bronze tables. 
 	  This stored procedure does not accept any parameters or return any values.
+Note: 
+	This procedure truncates the data in the bronze layer before loading. If you need
+	to append new data modify or create new procedure without truncating the tables
+	before loading the data.
 
 Usage Example:
     EXEC bronze.load_bronze;
