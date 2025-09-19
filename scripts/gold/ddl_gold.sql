@@ -31,9 +31,9 @@ SELECT
     ci.cst_create_date                 AS create_date
 FROM silver.crm_cust_info ci
 LEFT JOIN silver.erp_cust_az12 ca
-    ON ci.cst_key = ca.cid
+ON ci.cst_key = ca.cid
 LEFT JOIN silver.erp_loc_a101 la
-    ON ci.cst_key = la.cid;
+ON ci.cst_key = la.cid;
 GO
 
 
@@ -60,15 +60,15 @@ GO
 
 CREATE VIEW gold.fact_sales AS
 SELECT 
-sl.sls_ord_num     AS order_number,
-pr.product_key,
-cu.customer_key,
-sl.sls_order_dt    AS order_date,
-sl.sls_ship_dt     AS shipping_date,
-sl.sls_due_dt      AS due_date,
-sl.sls_price       AS price,
-sl.sls_quantity    AS quantity,
-sl.sls_sales       AS sales_amount
+    sl.sls_ord_num     AS order_number,
+    pr.product_key,
+    cu.customer_key,
+    sl.sls_order_dt    AS order_date,
+    sl.sls_ship_dt     AS shipping_date,
+    sl.sls_due_dt      AS due_date,
+    sl.sls_price       AS price,
+    sl.sls_quantity    AS quantity,
+    sl.sls_sales       AS sales_amount
 FROM silver.crm_sales_details sl
 LEFT JOIN gold.dim_products pr
 ON sl.sls_prd_key = pr.product_number
